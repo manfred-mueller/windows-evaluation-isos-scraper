@@ -23,7 +23,7 @@ async function getEvaluationIsos(page, filterRegExp, url) {
 
     return await page.evaluate(async (filterRegExp) => {
         var data = [];
-        const els = document.querySelectorAll("a[aria-label*=' ISO '][aria-label*=' 64-bit '][aria-label*='(en-US)']")
+        const els = document.querySelectorAll("a[aria-label*=' ISO '][aria-label*=' 64-bit '][aria-label*='(de-DE)']")
         for (const el of els) {
             const label = el.getAttribute("aria-label");
             if (filterRegExp && !label.match(filterRegExp)) {
@@ -31,7 +31,7 @@ async function getEvaluationIsos(page, filterRegExp, url) {
             }
             const name = label
                 .toLowerCase()
-                .replace(/\s*(edition|preview|download|server|iso|ltsc|enterprise|64-bit|\(en-US\))\s*/ig, " ")
+                .replace(/\s*(edition|preview|download|server|iso|ltsc|enterprise|64-bit|\(de-DE\))\s*/ig, " ")
                 .replace(/[^a-z0-9]+/ig, " ")
                 .trim()
                 .replace(/ +/ig, "-");
